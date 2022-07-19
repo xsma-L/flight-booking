@@ -34,12 +34,13 @@ h1 {
 
 .homepage {
   height: 100vh;
+  width: 100%;
   animation-name: backgroundChanger;
   animation-duration: 15s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 #homepage-search {
@@ -70,11 +71,11 @@ h1 {
   }
 
   50% {
-    background-image: url('/public/homepage-background-2.jpg');
+    background-image: url('/public/homepage-background-4.jpg');
   }
 
   100% {
-    background-image: url('/public/homepage-background-3.jpg');
+    background-image: url('/public/homepage-background-5.jpg');
   }
 }
 
