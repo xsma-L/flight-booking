@@ -28,6 +28,56 @@
   color: #61dafb;
 }
 
+h1 {
+  margin-top: unset;
+}
+
+.homepage {
+  height: 100vh;
+  animation-name: backgroundChanger;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#homepage-search {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.book-flight-form {
+  height: 80%;
+  width: 50%;
+  margin-right: 40px;
+  /* From https://css.glass */
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(3.5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes backgroundChanger {
+  0% {
+    background-image: url('/public/homepage-background-1.jpg');
+  }
+
+  50% {
+    background-image: url('/public/homepage-background-2.jpg');
+  }
+
+  100% {
+    background-image: url('/public/homepage-background-3.jpg');
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
