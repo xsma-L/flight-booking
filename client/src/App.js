@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import AllFlights from './Components/AllFlights';
 import Calendar from './Components/Calendar';
@@ -8,14 +9,14 @@ import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="all-flights" element={<AllFlights />} />
-        <Route path="calendar" element={<Calendar />} />
-        <Route path="contact-us" element={<ContactUs />} />
-      </Routes>
-    </BrowserRouter>
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="all-flights" element={<AllFlights />} />
+      <Route path="calendar" element={<Calendar />} />
+      <Route path="contact-us" element={<ContactUs />} />
+    </Routes>
+  </BrowserRouter>
   );
 }
 

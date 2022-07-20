@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from './Navbar';
 import { useState } from 'react';
 
 function Home(props) {
@@ -8,7 +9,7 @@ function Home(props) {
 
     return (
         <main className='homepage'>
-            <h1>Home</h1>
+            <Navbar />
             <section id='homepage-search'>
                 <div className='book-flight-form'>
                     <h4 className='form-tiile'>Rechercher un vol</h4>
@@ -68,7 +69,7 @@ function Home(props) {
                                 <div className='popular-flight-info'>
                                     <img src='airplane.png' />
                                     <div className='flight-location-price'>
-                                        <span className='city'>London</span>
+                                        <span className='city'>Londres</span>
                                         <span className='price'>à partir de 50€</span>
                                     </div>
                                     <span className='book-flight-link'>Réserver</span>
