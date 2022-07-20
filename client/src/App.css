@@ -36,6 +36,7 @@ h1 {
 
 .homepage {
   height: 100vh;
+  max-height: fit-content;
   width: 100%;
   animation-name: backgroundChanger;
   animation-duration: 15s;
@@ -89,7 +90,7 @@ h1 {
 }
 
 .book-flight-form {
-  font-family: 'Permanet Marker', cursive;
+  font-family: 'Permanet Marker', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -114,8 +115,10 @@ h1 {
 }
 
 .from span {
-  font-size: 17px;
+  font-size: 16px;
   margin-bottom: 11px;
+  color: #ababab;
+  font-weight: bold;
 }
 
 .from input {
@@ -133,8 +136,10 @@ h1 {
 }
 
 .to span {
-  font-size: 17px;
+  font-size: 16px;
   margin-bottom: 11px;
+  color: #ababab;
+  font-weight: bold;
 }
 
 .to input {
@@ -169,8 +174,10 @@ h1 {
 }
 
 .date-from span {
-  font-size: 17px;
+  font-size: 16px;
   margin-bottom: 11px;
+  color: #ababab;
+  font-weight: bold;
 }
 
 span.day-from {
@@ -188,8 +195,10 @@ input.day-from {
 }
 
 .date-to span {
-  font-size: 17px;
+  font-size: 16px;
   margin-bottom: 11px;
+  color: #ababab;
+  font-weight: bold;
 }
 
 input.day-to {
@@ -213,8 +222,10 @@ input.day-to {
 }
 
 span.adult-title {
-  font-size: 17px;
+  font-size: 16px;
   margin-bottom: 11px;
+  color: #ababab;
+  font-weight: bold;
 }
 
 .adult-nb {
@@ -235,8 +246,10 @@ span.adult-title {
 }
 
 span.children-title {
-  font-size: 17px;
+  font-size: 16px;
   margin-bottom: 11px;
+  color: #ababab;
+  font-weight: bold;
 }
 
 .children-nb {
@@ -278,6 +291,79 @@ button.search-flights {
   border-bottom-right-radius: 15px;
   border: none;
   background: #0480ff;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+button.search-flights:hover {
+  cursor: pointer;
+  background: #015fbff5;
+}
+
+.popular-flight {
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+  border-top: 0.5px dotted black;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popular-flight-content {
+  width: 100%;
+}
+
+h4.popular-title {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.popular-flight-info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.flight-infos {
+  width: 100%;
+}
+
+.popular-flight-info img {
+  height: 100px;
+}
+
+.flight-location-price {
+  display: flex;
+  flex-direction: column;
+}
+
+span.city {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+span.price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #9b9b9b;
+  margin-top: 5px;
+}
+
+span.book-flight-link {
+  background: #0f7efb;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  font-weight: bold;
+  color: #ffffff;
+  border-radius: 20px;
+}
+
+span.book-flight-link:hover {
+  cursor: pointer;
+  background: #0c65c1;
 }
 
 @keyframes App-logo-spin {

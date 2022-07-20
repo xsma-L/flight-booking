@@ -61,7 +61,21 @@ function Home(props) {
                         </div>
                         <button className='search-flights'>Réserver maintenant</button>
                     </div>
-
+                    <div className='popular-flight'>
+                        <h4 className='popular-title'>Vols populaires</h4>
+                        {/* <div className='popular-flight-content'> */}
+                            <div className='flight-infos'>
+                                <div className='popular-flight-info'>
+                                    <img src='airplane.png' />
+                                    <div className='flight-location-price'>
+                                        <span className='city'>London</span>
+                                        <span className='price'>à partir de 50€</span>
+                                    </div>
+                                    <span className='book-flight-link'>Réserver</span>
+                                </div>
+                            </div>
+                        {/* </div> */}
+                    </div>
                 </div>
             </section>
         </main>
