@@ -1,6 +1,8 @@
 import React from 'react';
+import Calendar from 'react-calendar';
+import '../styles/calendar.css'
 import Navbar from './Navbar';
-import { useState } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 
 function Home(props) {
 
@@ -8,9 +10,30 @@ function Home(props) {
     const [cityArrive, setCityArrive] = useState('Londres');
     const [nbAdult, setNbAdult] = useState(0);
     const [nbChild, setNbChild] = useState(0);
+    const [isActive, setActive] = useState(false);
+    const [dateStart, setDateStart] = useState({ day: null, month: null, year: null });
+    
+    useLayoutEffect(() => {
+        const today = new Date();
+        let day = today.getDate();
+        let month = today.toLocaleDateString('fr-FR', {month: 'long'});
+        let year = today.getFullYear();
+
+        let newDate = dateStart;
+        newDate.day = day;
+        newDate.month = month;
+        newDate.year = year;
+        
+        setDateStart(newDate);
+    }, [dateStart])
+
+    const handleToggle = () => {
+        setActive(!isActive);
+    }
 
     return (
         <main className='homepage'>
+            {console.log('render')}
             <Navbar />
             <section id='homepage-search'>
                 <div className='book-flight-form'>
@@ -28,8 +51,12 @@ function Home(props) {
                         </div>
                         <div className='form-date'>
                             <div className='date-from'>
-                                <label>Du</label>
-                                <input type='text' value='23 Avril' className='day-from' />
+                              <label>Du</label>
+                                <input type='text' value={ dateStart.day + ' ' + dateStart.month } className='day-from'  onClick={ handleToggle }/>
+                                <div className={ isActive ? 'calendar active' : 'calendar' }>
+                                    <span onClick={ handleToggle }>x</span>
+                                    <Calendar />
+                                </div>
                             </div>
                             <div className='date-to'>
                                 <label>Au</label>
@@ -45,7 +72,8 @@ function Home(props) {
                                         <button onClick={ () => setNbAdult(nbAdult + 1) }>+</button>
                                         { nbAdult > 0 ? (
                                             <button onClick={ () => setNbAdult(nbAdult - 1) }>+</button> ) 
-                                            : <button>-</button> }
+                                            : <button>-</button>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -57,7 +85,8 @@ function Home(props) {
                                         <button onClick={ () => setNbChild(nbChild +1) }>+</button>
                                         { nbChild > 0 ? (
                                             <button onClick={ () => setNbChild(nbChild -1) }>-</button> )
-                                            : <button>-</button> }
+                                            : <button>-</button>
+                                        }
                                     </div>
                                 </div>
                             </div>
