@@ -51,9 +51,13 @@ span.logo-title {
 .navbar-links a {
   font-size: 18px;
   font-family: 'Work Sans';
-  color: grey;
+  color: #383838;
   font-weight: bold;
   text-decoration-line: none;
+}
+
+.navbar-links a:hover {
+  color: black;
 }
 
 .user-account {
@@ -113,13 +117,12 @@ h1 {
 }
 
 .homepage {
-  height: 100%;
+  height: 100vh;
   width: 100%;
-  /* animation-name: backgroundChanger;
+  animation-name: backgroundChanger;
   animation-duration: 15s;
   animation-iteration-count: infinite;
-  animation-direction: alternate; */
-  background-image: url('/public/homepage-background-1.jpg');
+  animation-direction: alternate;
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -133,7 +136,7 @@ h1 {
 }
 
 .book-flight-form {
-  height: fit-content;
+  height: 550px;
   width: 360px;
   margin-right: 150px;
   background: rgb(255 255 255);
@@ -146,6 +149,7 @@ h1 {
 
 .form-content {
   width: 80%;
+  height: 300px;
   border: 0.5px solid #cbcbc6;
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
@@ -181,7 +185,7 @@ h1 {
 }
 
 .from-to {
-  height: 30%;
+  height: 25%;
   display: flex;
   border-bottom: 0.5px solid #cbcbc6;
 }
@@ -190,11 +194,11 @@ h1 {
   width: 50%;
   display: flex;
   flex-direction: column;
-  padding: 20px 0 20px 22px;
+  padding: 10px 0 20px 22px;
   border-right: 0.5px solid #cbcbc6;
 }
 
-.from span {
+.from label {
   font-size: 16px;
   margin-bottom: 11px;
   color: #ababab;
@@ -212,10 +216,10 @@ h1 {
   width: 50%;
   display: flex;
   flex-direction: column;
-  padding: 20px 0 20px 22px;
+  padding: 10px 0 20px 22px;
 }
 
-.to span {
+.to label {
   font-size: 16px;
   margin-bottom: 11px;
   color: #ababab;
@@ -230,7 +234,7 @@ h1 {
 }
 
 .form-date {
-  height: 30%;
+  height: 25%;
   display: flex;
   border-bottom: 0.5px solid #cbcbc6;
 }
@@ -243,18 +247,18 @@ h1 {
   width: 50%;
   display: flex;
   flex-direction: column;
-  padding: 20px 0 20px 22px;
+  padding: 10px 0 20px 22px;
 }
 
 .date-from {
   width: 50%;
   display: flex;
   flex-direction: column;
-  padding: 20px 0 20px 22px;
+  padding: 10px 0 20px 22px;
   border-right: 0.5px solid #cbcbc6;
 }
 
-.date-from span {
+.date-from label {
   font-size: 16px;
   margin-bottom: 11px;
   color: #ababab;
@@ -275,7 +279,7 @@ input.day-from {
   font-weight: bold;
 }
 
-.date-to span {
+.date-to label {
   font-size: 16px;
   margin-bottom: 11px;
   color: #ababab;
@@ -290,7 +294,7 @@ input.day-to {
 }
 
 .form-passenger {
-  height: 30%;
+  height: 33%;
   display: flex;
   border-bottom: 0.5px solid #cbcbc6;
 }
@@ -299,11 +303,11 @@ input.day-to {
   width: 50%;
   display: flex;
   flex-direction: column;
-  padding: 20px 0 20px 22px;
+  padding: 10px 0 20px 22px;
   border-right: 0.5px solid #cbcbc6;
 }
 
-span.adult-title {
+label.adult-title {
   font-size: 16px;
   margin-bottom: 11px;
   color: #ababab;
@@ -324,10 +328,10 @@ span.adult-title {
   width: 50%;
   display: flex;
   flex-direction: column;
-  padding: 20px 0 20px 22px;
+  padding: 10px 0 20px 22px;
 }
 
-span.children-title {
+label.children-title {
   font-size: 16px;
   margin-bottom: 11px;
   color: #ababab;
