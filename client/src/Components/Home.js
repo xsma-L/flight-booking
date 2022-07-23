@@ -11,29 +11,25 @@ function Home(props) {
     const [nbAdult, setNbAdult] = useState(0);
     const [nbChild, setNbChild] = useState(0);
     const [isActive, setActive] = useState(false);
-    const [dateStart, setDateStart] = useState({ day: null, month: null, year: null });
-    
-    useLayoutEffect(() => {
-        const today = new Date();
-        let day = today.getDate();
-        let month = today.toLocaleDateString('fr-FR', {month: 'long'});
-        let year = today.getFullYear();
-
-        let newDate = dateStart;
-        newDate.day = day;
-        newDate.month = month;
-        newDate.year = year;
-        
-        setDateStart(newDate);
-    }, [dateStart])
+    const [isActive2, setActive2] = useState(false);
+    const [dateFrom, setDateFrom] = useState({ day: new Date().getDate(), month: new Date().toLocaleDateString('fr-FR', {month: 'long'}), year: new Date().getFullYear() });
+    const [dateTest, setDateTest] = useState(null);
+    const [dateTo, setDateTo] = useState({ day: new Date().getDate() + 1, month: new Date().toLocaleDateString('fr-FR', {month: 'long'}), year: new Date().getFullYear() });
 
     const handleToggle = () => {
         setActive(!isActive);
     }
 
+    const handleToggle2 = () => {
+        console.log('ok')
+        setActive2(!isActive2);
+    }
+
+    const dateFromOnChange = (e) => {
+        console.log(e);
+    }
     return (
         <main className='homepage'>
-            {console.log('render')}
             <Navbar />
             <section id='homepage-search'>
                 <div className='book-flight-form'>
@@ -52,15 +48,19 @@ function Home(props) {
                         <div className='form-date'>
                             <div className='date-from'>
                               <label>Du</label>
-                                <input type='text' value={ dateStart.day + ' ' + dateStart.month } className='day-from'  onClick={ handleToggle }/>
+                                <input type='text' value={ dateFrom.day + ' ' + dateFrom.month } className='day-from' onClick={ handleToggle }/>
                                 <div className={ isActive ? 'calendar active' : 'calendar' }>
                                     <span onClick={ handleToggle }>x</span>
-                                    <Calendar />
+                                    <Calendar onChange={e => dateFromOnChange(e.target.value)}/>
                                 </div>
                             </div>
                             <div className='date-to'>
                                 <label>Au</label>
-                                <input type='text' value='34 Juin' className='day-to' />
+                                <input type='text' value={ dateTo.day + ' ' + dateTo.month } className='day-to' onClick={ handleToggle2 }/>
+                                <div className={ isActive2 ? 'calendar active' : 'calendar' }>
+                                    <span onClick={ handleToggle2 }>x</span>
+                                    <Calendar />
+                                </div>
                             </div>
                         </div>
                         <div className='form-passenger'>
@@ -69,23 +69,39 @@ function Home(props) {
                                 <div className='adult-nb'>
                                     <span>{ nbAdult }</span>
                                     <div className='increment-decrement'>
-                                        <button onClick={ () => setNbAdult(nbAdult + 1) }>+</button>
+                                        <button onClick={ (e) => {
+                                            e.preventDefault();
+                                            setNbAdult(nbAdult + 1);
+                                        }}>+</button>
                                         { nbAdult > 0 ? (
-                                            <button onClick={ () => setNbAdult(nbAdult - 1) }>+</button> ) 
-                                            : <button>-</button>
+                                            <button onClick={ (e) => {
+                                                e.preventDefault();
+                                                setNbAdult(nbAdult - 1);
+                                            }}>+</button> ) 
+                                            : <button onClick={ (e) => {
+                                                e.preventDefault();
+                                            }}>-</button>
                                         }
                                     </div>
                                 </div>
                             </div>
                             <div className='children-passenger'>
-                                <label className='children-title'>Adultes</label>
+                                <label className='children-title'>Enfants</label>
                                 <div className='children-nb'>
                                     <span>{ nbChild }</span>
                                     <div className='increment-decrement'>
-                                        <button onClick={ () => setNbChild(nbChild +1) }>+</button>
+                                        <button onClick={ (e) => {
+                                            e.preventDefault();
+                                            setNbChild(nbChild +1);
+                                        }}>+</button>
                                         { nbChild > 0 ? (
-                                            <button onClick={ () => setNbChild(nbChild -1) }>-</button> )
-                                            : <button>-</button>
+                                            <button onClick={ (e) => {
+                                                e.preventDefault();
+                                                setNbChild(nbChild -1);
+                                            }}>-</button> )
+                                            : <button onClick={ (e) => {
+                                                e.preventDefault();
+                                            }}>-</button>
                                         }
                                     </div>
                                 </div>
