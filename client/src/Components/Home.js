@@ -6,28 +6,35 @@ import { useState, useEffect, useLayoutEffect } from 'react';
 
 function Home(props) {
 
+    const apiKey = process.env.API_KEY;
+    let today = new Date();
+    let tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
     const [cityStart, setCityStart] = useState ('Paris');
     const [cityArrive, setCityArrive] = useState('Londres');
     const [nbAdult, setNbAdult] = useState(0);
     const [nbChild, setNbChild] = useState(0);
     const [isActive, setActive] = useState(false);
     const [isActive2, setActive2] = useState(false);
-    const [dateFrom, setDateFrom] = useState({ day: new Date().getDate(), month: new Date().toLocaleDateString('fr-FR', {month: 'long'}), year: new Date().getFullYear() });
-    const [dateTest, setDateTest] = useState(null);
-    const [dateTo, setDateTo] = useState({ day: new Date().getDate() + 1, month: new Date().toLocaleDateString('fr-FR', {month: 'long'}), year: new Date().getFullYear() });
-
+    const [dateFrom, setDateFrom] = useState({ day: today.getDate(), month: today.toLocaleDateString('fr-FR', {month: 'long'}), year: today.getFullYear() });
+    const [dateTo, setDateTo] = useState({ day: tomorrow.getDate(), month: tomorrow.toLocaleDateString('fr-FR', {month: 'long'}), year: tomorrow.getFullYear() });
+    
     const handleToggle = () => {
         setActive(!isActive);
     }
 
     const handleToggle2 = () => {
-        console.log('ok')
         setActive2(!isActive2);
     }
 
     const dateFromOnChange = (e) => {
-        console.log(e);
+        setDateFrom({day: e.getDate(), month: e.toLocaleDateString('fr-FR', {month: 'long'}), year: e.getFullYear()})
     }
+
+    const dateToOnChange = (e) => {
+        setDateTo({day: e.getDate(), month: e.toLocaleDateString('fr-FR', {month: 'long'}), year: e.getFullYear()})
+    }
+
     return (
         <main className='homepage'>
             <Navbar />
@@ -38,28 +45,28 @@ function Home(props) {
                         <div className='from-to'>
                             <div className='from'>
                                 <label>Ville de départ</label>
-                                <input type='text' value={ cityStart } onChange={e => setCityStart(e.target.value)}/>  
+                                <input type='text' value={cityStart} onChange={e => setCityStart(e.target.value)}/>  
                             </div>
                             <div className='to'>
                                 <label>Ville d'arrivé</label>
-                                <input type='text' value={ cityArrive } onChange={e => setCityArrive(e.target.value)} />
+                                <input type='text' value={cityArrive} onChange={e => setCityArrive(e.target.value)} />
                             </div>
                         </div>
                         <div className='form-date'>
                             <div className='date-from'>
                               <label>Du</label>
-                                <input type='text' value={ dateFrom.day + ' ' + dateFrom.month } className='day-from' onClick={ handleToggle }/>
-                                <div className={ isActive ? 'calendar active' : 'calendar' }>
-                                    <span onClick={ handleToggle }>x</span>
-                                    <Calendar onChange={e => dateFromOnChange(e.target.value)}/>
+                                <span className='day-from' onClick={handleToggle}>{ dateFrom.day + ' ' + dateFrom.month } </span>
+                                <div className={isActive ? 'calendar active' : 'calendar'}>
+                                    <span onClick={handleToggle}>x</span>
+                                    <Calendar onChange={e => dateFromOnChange(e)}/>
                                 </div>
                             </div>
                             <div className='date-to'>
                                 <label>Au</label>
-                                <input type='text' value={ dateTo.day + ' ' + dateTo.month } className='day-to' onClick={ handleToggle2 }/>
+                                <span className='day-to' onClick={ handleToggle2 }>{ dateTo.day + ' ' + dateTo.month }</span>
                                 <div className={ isActive2 ? 'calendar active' : 'calendar' }>
                                     <span onClick={ handleToggle2 }>x</span>
-                                    <Calendar />
+                                    <Calendar defaultActiveStartDate={tomorrow} onChange={e => dateToOnChange(e)}/>
                                 </div>
                             </div>
                         </div>

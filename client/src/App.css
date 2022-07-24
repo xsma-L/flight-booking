@@ -291,8 +291,15 @@ h1 {
 }
 
 span.day-from {
-  font-size: 20px;
-  width: 75%;
+  font-size: 18px;
+  /* width: 75%; */
+  border: none;
+  font-weight: bold;
+}
+
+span.day-to {
+  font-size: 18px;
+  /* width: 75%; */
   border: none;
   font-weight: bold;
 }
